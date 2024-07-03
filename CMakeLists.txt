@@ -1,8 +1,8 @@
 #THIS FILE IS AUTO GENERATED FROM THE TEMPLATE! DO NOT CHANGE!
-if(DEFINED LIBRARY_PATH)
+if(DEFINED KLST_STM32_LIBRARY_PATH)
     message(STATUS "building klangstrom-stm32 as library")
-    message(STATUS "LIBRARY_PATH is set to ${LIBRARY_PATH}")
-    include(${LIBRARY_PATH}/cmake/library-config.cmake)
+    message(STATUS "KLST_STM32_LIBRARY_PATH is set to ${KLST_STM32_LIBRARY_PATH}")
+    include(${KLST_STM32_LIBRARY_PATH}/cmake/library-config.cmake)
 else()
     message(STATUS "building klangstrom-stm32 as executable. TODO not implemented yet")
     set(CMAKE_SYSTEM_NAME Generic)

@@ -1,6 +1,6 @@
 # klangstrom-stm32
 
-the files are generated for one board only ( i.e KLST_PANDA + KLST_CATERPILLAR ), however in the future there maybe different folders that can be specfied via LIBRARY_PATH to select different ( including custom ) boards.
+the files are generated for one board only ( i.e KLST_PANDA + KLST_CATERPILLAR ), however in the future there maybe different folders that can be specfied via KLST_STM32_LIBRARY_PATH to select different ( including custom ) boards.
 
 ```
 .

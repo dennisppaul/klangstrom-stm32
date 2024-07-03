@@ -46,7 +46,7 @@ endif()
 set(CMAKE_C_FLAGS "${TARGET_FLAGS} ${COMMON_C_FLAGS} ${CMAKE_C_FLAGS_DEBUG}")
 set(CMAKE_ASM_FLAGS "${TARGET_FLAGS} ${COMMON_C_FLAGS} -x assembler-with-cpp -MMD -MP")
 set(CMAKE_CXX_FLAGS "${TARGET_FLAGS} ${COMMON_C_FLAGS} -fno-rtti -fno-exceptions -fno-threadsafe-statics ${CMAKE_C_FLAGS_DEBUG}")
-set(CMAKE_EXE_LINKER_FLAGS "${TARGET_FLAGS} -T${LIBRARY_PATH}/STM32H723ZGTX_FLASH.ld --specs=nano.specs ${COMMON_LINK_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS "${TARGET_FLAGS} -T${KLST_STM32_LIBRARY_PATH}/STM32H723ZGTX_FLASH.ld --specs=nano.specs ${COMMON_LINK_FLAGS}")
 
 # Set C++ linker flags separately to add standard C++ libraries
 set(CMAKE_CXX_LINK_FLAGS "${TARGET_FLAGS} ${COMMON_LINK_FLAGS} -Wl,--start-group -lstdc++ -lsupc++ -Wl,--end-group")
