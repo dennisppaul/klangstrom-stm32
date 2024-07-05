@@ -1,27 +1,28 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    dma2d.c
-  * @brief   This file provides code for the configuration
-  *          of the DMA2D instances.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    dma2d.c
+ * @brief   This file provides code for the configuration
+ *          of the DMA2D instances.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "dma2d.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "KlangstromEnvironment.h"
+#if defined(KLST_PANDA_STM32)
 /* USER CODE END 0 */
 
 DMA2D_HandleTypeDef hdma2d;
@@ -94,5 +95,5 @@ void HAL_DMA2D_MspDeInit(DMA2D_HandleTypeDef* dma2dHandle) {
 }
 
 /* USER CODE BEGIN 1 */
-
+#endif // defined(ARDUINO_KLST_PANDA)
 /* USER CODE END 1 */

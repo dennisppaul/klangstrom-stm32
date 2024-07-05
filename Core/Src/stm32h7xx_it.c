@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    stm32h7xx_it.c
-  * @brief   Interrupt Service Routines.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    stm32h7xx_it.c
+ * @brief   Interrupt Service Routines.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -22,6 +22,8 @@
 #include "stm32h7xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "KlangstromEnvironment.h"
+#if defined(KLST_PANDA_STM32)
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -182,7 +184,8 @@ void PendSV_Handler(void) {
 
     /* USER CODE END PendSV_IRQn 0 */
     /* USER CODE BEGIN PendSV_IRQn 1 */
-
+    // NOTE this only works if `PendSV_Handler` is locate above `SysTick_Handler`
+#if !defined(ARDUINO_KLST_PANDA)
     /* USER CODE END PendSV_IRQn 1 */
 }
 
@@ -195,8 +198,8 @@ void SysTick_Handler(void) {
     /* USER CODE END SysTick_IRQn 0 */
     HAL_IncTick();
     /* USER CODE BEGIN SysTick_IRQn 1 */
-
-    /* USER CODE END SysTick_IRQn 1 */
+#endif // !defined(ARDUINO_KLST_PANDA)
+       /* USER CODE END SysTick_IRQn 1 */
 }
 
 /******************************************************************************/
@@ -420,12 +423,12 @@ void UART4_IRQHandler(void) {
   */
 void DMA2_Stream0_IRQHandler(void) {
     /* USER CODE BEGIN DMA2_Stream0_IRQn 0 */
-
+#if !defined(ARDUINO_KLST_PANDA)
     /* USER CODE END DMA2_Stream0_IRQn 0 */
     HAL_DMA_IRQHandler(&hdma_dfsdm1_flt0);
     /* USER CODE BEGIN DMA2_Stream0_IRQn 1 */
-
-    /* USER CODE END DMA2_Stream0_IRQn 1 */
+#endif // !defined(ARDUINO_KLST_PANDA)
+       /* USER CODE END DMA2_Stream0_IRQn 1 */
 }
 
 /**
@@ -433,12 +436,12 @@ void DMA2_Stream0_IRQHandler(void) {
   */
 void DMA2_Stream1_IRQHandler(void) {
     /* USER CODE BEGIN DMA2_Stream1_IRQn 0 */
-
+#if !defined(ARDUINO_KLST_PANDA)
     /* USER CODE END DMA2_Stream1_IRQn 0 */
     HAL_DMA_IRQHandler(&hdma_dfsdm1_flt1);
     /* USER CODE BEGIN DMA2_Stream1_IRQn 1 */
-
-    /* USER CODE END DMA2_Stream1_IRQn 1 */
+#endif // !defined(ARDUINO_KLST_PANDA)
+       /* USER CODE END DMA2_Stream1_IRQn 1 */
 }
 
 /**
@@ -446,12 +449,12 @@ void DMA2_Stream1_IRQHandler(void) {
   */
 void OTG_HS_EP1_OUT_IRQHandler(void) {
     /* USER CODE BEGIN OTG_HS_EP1_OUT_IRQn 0 */
-
+#if !defined(ARDUINO_KLST_PANDA)
     /* USER CODE END OTG_HS_EP1_OUT_IRQn 0 */
     HAL_HCD_IRQHandler(&hhcd_USB_OTG_HS);
     /* USER CODE BEGIN OTG_HS_EP1_OUT_IRQn 1 */
-
-    /* USER CODE END OTG_HS_EP1_OUT_IRQn 1 */
+#endif // !defined(ARDUINO_KLST_PANDA)
+       /* USER CODE END OTG_HS_EP1_OUT_IRQn 1 */
 }
 
 /**
@@ -459,12 +462,12 @@ void OTG_HS_EP1_OUT_IRQHandler(void) {
   */
 void OTG_HS_EP1_IN_IRQHandler(void) {
     /* USER CODE BEGIN OTG_HS_EP1_IN_IRQn 0 */
-
+#if !defined(ARDUINO_KLST_PANDA)
     /* USER CODE END OTG_HS_EP1_IN_IRQn 0 */
     HAL_HCD_IRQHandler(&hhcd_USB_OTG_HS);
     /* USER CODE BEGIN OTG_HS_EP1_IN_IRQn 1 */
-
-    /* USER CODE END OTG_HS_EP1_IN_IRQn 1 */
+#endif // !defined(ARDUINO_KLST_PANDA)
+       /* USER CODE END OTG_HS_EP1_IN_IRQn 1 */
 }
 
 /**
@@ -472,12 +475,12 @@ void OTG_HS_EP1_IN_IRQHandler(void) {
   */
 void OTG_HS_IRQHandler(void) {
     /* USER CODE BEGIN OTG_HS_IRQn 0 */
-
+#if !defined(ARDUINO_KLST_PANDA)
     /* USER CODE END OTG_HS_IRQn 0 */
     HAL_HCD_IRQHandler(&hhcd_USB_OTG_HS);
     /* USER CODE BEGIN OTG_HS_IRQn 1 */
-
-    /* USER CODE END OTG_HS_IRQn 1 */
+#endif // !defined(ARDUINO_KLST_PANDA)
+       /* USER CODE END OTG_HS_IRQn 1 */
 }
 
 /**
@@ -586,5 +589,5 @@ void UART9_IRQHandler(void) {
 }
 
 /* USER CODE BEGIN 1 */
-
+#endif // defined(ARDUINO_KLST_PANDA)
 /* USER CODE END 1 */

@@ -1,27 +1,28 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    ltdc.c
-  * @brief   This file provides code for the configuration
-  *          of the LTDC instances.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    ltdc.c
+ * @brief   This file provides code for the configuration
+ *          of the LTDC instances.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "ltdc.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "KlangstromEnvironment.h"
+#if defined(KLST_PANDA_STM32)
 /* USER CODE END 0 */
 
 LTDC_HandleTypeDef hltdc;
@@ -261,5 +262,5 @@ void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle) {
 }
 
 /* USER CODE BEGIN 1 */
-
+#endif // defined(ARDUINO_KLST_PANDA)
 /* USER CODE END 1 */

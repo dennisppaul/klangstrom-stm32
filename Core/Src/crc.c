@@ -1,27 +1,28 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    crc.c
-  * @brief   This file provides code for the configuration
-  *          of the CRC instances.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    crc.c
+ * @brief   This file provides code for the configuration
+ *          of the CRC instances.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "crc.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "KlangstromEnvironment.h"
+#if defined(KLST_PANDA_STM32)
 /* USER CODE END 0 */
 
 CRC_HandleTypeDef hcrc;
@@ -79,5 +80,5 @@ void HAL_CRC_MspDeInit(CRC_HandleTypeDef* crcHandle) {
 }
 
 /* USER CODE BEGIN 1 */
-
+#endif // defined(ARDUINO_KLST_PANDA)
 /* USER CODE END 1 */
