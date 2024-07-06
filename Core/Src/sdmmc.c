@@ -1,27 +1,28 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    sdmmc.c
-  * @brief   This file provides code for the configuration
-  *          of the SDMMC instances.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    sdmmc.c
+ * @brief   This file provides code for the configuration
+ *          of the SDMMC instances.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "sdmmc.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "KlangstromEnvironment.h"
+#if defined(KLST_PANDA_STM32)
 /* USER CODE END 0 */
 
 SD_HandleTypeDef hsd2;
@@ -44,7 +45,7 @@ void MX_SDMMC2_SD_Init(void) {
     hsd2.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
     hsd2.Init.ClockDiv            = 0;
     /* USER CODE BEGIN SDMMC2_Init 2 */
-
+    hsd2.Init.ClockDiv = SDMMC_INIT_CLK_DIV;
     /* USER CODE END SDMMC2_Init 2 */
 }
 
@@ -138,5 +139,5 @@ void HAL_SD_MspDeInit(SD_HandleTypeDef* sdHandle) {
 }
 
 /* USER CODE BEGIN 1 */
-
+#endif // defined(ARDUINO_KLST_PANDA)
 /* USER CODE END 1 */

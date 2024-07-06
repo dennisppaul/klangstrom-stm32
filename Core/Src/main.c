@@ -1,20 +1,39 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
+
+/*
+ * TODO after code generation:
+ *
+ * in `./Core/Src/main.c`
+ *
+ * - LINE 75: remove `static` from `void MPU_Config(void);`
+ *
+ * in `./USB_HOST/Target/usbh_conf.h`
+ *
+ * - LINE 130: add `\r` to `printf("\n\r");`
+ * - LINE 141: add `\r` to `printf("\n\r");`
+ * - LINE 151: add `\r` to `printf("\n\r");`
+ *
+ * ( line numbers may vary )
+ */
+
+#include "KlangstromEnvironment.h"
+#if !defined(ARDUINO_KLST_PANDA) && !defined(ARDUINO_KLST_CATERPILLAR)
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -28,7 +47,14 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#endif
+#if defined(KLST_PANDA_STM32)
+#include "main.h"
+#include "adc.h"
+#include "i2c.h"
+#include "spi.h"
+#include "tim.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,13 +90,78 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+#define KLST_OMIT_MAIN
+#ifdef KLST_OMIT_MAIN
+static void _empty_main(void) __attribute__((unused));
+static void _empty_main() {
+#else
 /* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
   * @retval int
   */
+int main(void) {
+
+    /* USER CODE BEGIN 1 */
+
+    /* USER CODE END 1 */
+
+    /* MPU Configuration--------------------------------------------------------*/
+    MPU_Config();
+
+    /* Enable the CPU Cache */
+
+    /* Enable I-Cache---------------------------------------------------------*/
+    SCB_EnableICache();
+
+    /* Enable D-Cache---------------------------------------------------------*/
+    SCB_EnableDCache();
+
+    /* MCU Configuration--------------------------------------------------------*/
+
+    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+    HAL_Init();
+
+    /* USER CODE BEGIN Init */
+
+    /* USER CODE END Init */
+
+    /* Configure the system clock */
+    SystemClock_Config();
+
+    /* Configure the peripherals common clocks */
+    PeriphCommonClock_Config();
+
+    /* USER CODE BEGIN SysInit */
+
+    /* USER CODE END SysInit */
+
+    /* Initialize all configured peripherals */
+    MX_I2C1_Init();
+    MX_USART2_UART_Init();
+    MX_ADC1_Init();
+    MX_ADC2_Init();
+    MX_TIM23_Init();
+    MX_TIM12_Init();
+    MX_TIM24_Init();
+    MX_DFSDM1_Init();
+    MX_SPI4_Init();
+    /* USER CODE BEGIN 2 */
+
+    /* USER CODE END 2 */
+
+    /* Infinite loop */
+    /* USER CODE BEGIN WHILE */
+    while (1) {
+        /* USER CODE END WHILE */
+        MX_USB_HOST_Process();
+
+        /* USER CODE BEGIN 3 */
+    }
+#endif // KLST_OMIT_MAIN
+       /* USER CODE END 3 */
+}
 
 /**
   * @brief System Clock Configuration
@@ -199,7 +290,8 @@ void MPU_Config(void) {
   */
 void Error_Handler(void) {
     /* USER CODE BEGIN Error_Handler_Debug */
-    /* User can add his own implementation to report the HAL error return state */
+    printf(":(\r\n");
+    /* User can add their own implementation to report the HAL error return state */
     __disable_irq();
     while (1) {
     }
@@ -221,3 +313,7 @@ void assert_failed(uint8_t* file, uint32_t line) {
     /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+/* USER CODE BEGIN 7 */
+#endif // defined(ARDUINO_KLST_PANDA) // TODO this will not persist after code generation
+/* USER CODE END 7 */
