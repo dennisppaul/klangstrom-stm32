@@ -24,12 +24,15 @@ set(CMAKE_EXECUTABLE_SUFFIX_CXX     ".elf")
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # MCU specific flags
-set(TARGET_FLAGS "-mcpu=cortex-m7 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -mthumb-interwork")
+set(TARGET_FLAGS "-mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -mthumb-interwork")
+#add_compile_options(-mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -mthumb-interwork)
 
 add_compile_definitions(ARM_MATH_CM4 ARM_MATH_MATRIX_CHECK ARM_MATH_ROUNDING)
+add_compile_options($<$<COMPILE_LANGUAGE:ASM>:-x$<SEMICOLON>assembler-with-cpp>)
 
 # Common C flags
 set(COMMON_C_FLAGS "-fdata-sections -ffunction-sections -fno-common -fmessage-length=0")
+#add_compile_options(-fdata-sections -ffunction-sections -fno-common -fmessage-length=0)
 
 # Common linker flags
 set(COMMON_LINK_FLAGS "-Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage")
