@@ -27,3 +27,11 @@ target_include_directories(klangstrom-stm32 PUBLIC
 )
 
 target_compile_definitions(klangstrom-stm32 PUBLIC -DDEBUG -DUSE_HAL_DRIVER -DSTM32H723xx)
+
+# PDM Library
+
+set(PDM_LIBRARY_PATH "${KLST_STM32_LIBRARY_PATH}/Middlewares/ST/STM32_Audio/Addons/PDM")
+set(PDM_STATIC_LIBRARY_PATH "${PDM_LIBRARY_PATH}/Lib")
+set(PDM_LIBRARY_INCLUDE "${PDM_LIBRARY_PATH}/Inc")
+target_include_directories(klangstrom-stm32 PUBLIC ${PDM_LIBRARY_INCLUDE})
+target_link_libraries(klangstrom-stm32 PUBLIC ${PDM_STATIC_LIBRARY_PATH}/libPDMFilter_CM7_GCC_wc32.a)

@@ -23,6 +23,7 @@
 /* USER CODE BEGIN 0 */
 #include "KlangstromEnvironment.h"
 #if defined(KLST_PANDA_STM32)
+#ifdef IGNORE_CRC_HANDLE
 /* USER CODE END 0 */
 
 CRC_HandleTypeDef hcrc;
@@ -31,7 +32,9 @@ CRC_HandleTypeDef hcrc;
 void MX_CRC_Init(void) {
 
     /* USER CODE BEGIN CRC_Init 0 */
-
+#else
+void MX_CRC_Init(void) {
+#endif // IGNORE_CRC_HANDLE
     /* USER CODE END CRC_Init 0 */
 
     /* USER CODE BEGIN CRC_Init 1 */
